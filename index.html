@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Rico | CS Student</title>
+    <meta name="description"
+        content="Creative software developer specializing in building exceptional digital experiences">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Contenedor de estrellas fugaces -->
+        <div id="shooting-stars-container"></div>
+
+        <!-- Background Lines -->
+        <div class="lines">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Anthony R.</a>
+                <ul class="nav-links">
+                    <li><a href="#work">Proyectos</a></li>
+                    <li><a href="#experience">Educación</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero visible">
+            <div class="container">
+                <div class="hero-intro">
+                    <!-- Profile Picture: Replace src with your image or use the placeholder -->
+                    <img src="166770823.jpg" alt="Anthony R." class="profile-picture" />
+                    <div>
+                        <div class="status-tags">
+                            <div class="status">
+                                <span class="status-dot"></span>
+                                Disponible
+                            </div>
+                            <div class="location-tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                Iquique, Chile
+                            </div>
+                        </div>
+                        <h1>Hola, Soy Anthony <span class="wave">&#128075;</span></h1>
+                    </div>
+                </div>
+                <p>
+                    Estudiante de Ingeniería Informática. En constante aprendizaje sobre el mundo del desarrollo de
+                    software, con el objetivo de crear tecnología sencilla, eficiente y bien diseñada.
+                </p>
+                
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tech Stack</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill">
+                        <span class="skill-dot" style="background: #3178c6;"></span>
+                        PHP
+                    </div>
+                    <div class="skill">
+                        <span class="skill-dot" style="background: #339933;"></span>
+                        MongoDB
+                    </div>
+                    <div class="skill">
+                        <span class="skill-dot" style="background: #336791;"></span>
+                        MySQL
+                    </div>
+                    <div class="skill">
+                        <span class="skill-dot" style="background: #38bdf8;"></span>
+                        Kotlin
+                    </div>
+                    <div class="skill">
+                        <span class="skill-dot" style="background: #f7df1e;"></span>
+                        JavaScript
+                    </div>
+                    <div class="skill">
+                        <span class="skill-dot" style="background: #ec9136;"></span>
+                        HTML
+                    </div><div class="skill">
+                        <span class="skill-dot" style="background: #339933;"></span>
+                        CSS
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="work">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Destacado</h2>
+                    <a href="https://github.com/arico-dev?tab=repositories" target="_blank" rel="noopener">Ver todo</a>
+                </div>
+                <div class="projects-grid">
+                    <!-- Reemplaza el '#' con el enlace real de tu proyecto Arduino -->
+                    <a href="https://github.com/arico-dev/Arduino-IoT-Hub" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-header">
+                            <h3>Arduino IoT Hub</h3>
+                            <svg class="project-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" />
+                            </svg>
+                        </div>
+                        <p>Aplicación Android nativa (Kotlin) para controlar y monitorizar una placa Arduino vía Bluetooth.
+                           Incluye autenticación con Firebase, registro de eventos en Cloud Firestore, consola serial para
+                           envío/recepción de comandos, monitor en tiempo real de sensor LDR y control remoto de LEDs.
+                           Interfaz moderna basada en Material Design 3 y flujo completo de usuario (Splash, login, panel).</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Kotlin</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">Bluetooth</span>
+                            <span class="project-tag">Material Design</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/arico-dev/Sistema-Deportivo-" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-header">
+                            <h3>SportTrack — Sistema de Gestión Deportiva</h3>
+                            <svg class="project-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" />
+                            </svg>
+                        </div>
+                        <p>Plataforma web para la administración de actividades deportivas en instituciones educativas.
+                           Gestiona disciplinas, entrenadores, estudiantes, inscripciones, asistencias y evaluaciones con
+                           control de roles y reportes. Interfaz responsive y generación de estadísticas para coordinadores,
+                           entrenadores y estudiantes.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">PDO</span>
+                            <span class="project-tag">Chart.js</span>
+                            <span class="project-tag">HTML/CSS/JS</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Educación y Formación</h2>
+                </div>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <span class="experience-date">Actualidad</span>
+                        <div class="experience-content">
+                            <h3>Estudiante de Ingeniería Informática</h3>
+                            <p class="company">Universidad Tecnica INACAP</p>
+                            <p>Desarrollo de proyectos académicos, aprendizaje de estructuras de datos y fundamentos de la ingeniería de software. Aplicación de conocimientos teóricos en proyectos prácticos.</p>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <span class="experience-date">Constante</span>
+                        <div class="experience-content">
+                            <h3>Aprendizaje Autodidacta</h3>
+                            <p class="company">Desarrollo Web y Tecnologías Modernas</p>
+                            <p>Formación continua mediante cursos y documentación oficial en tecnologías como React, TypeScript, bases de datos y desarrollo backend. Creación de proyectos personales para afianzar conocimientos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get in Touch</h2>
+                </div>
+                <div class="contact-grid">
+                    <a href="mailto:allen.are@proton.me" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <path d="M22 6l-10 7L2 6" />
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://github.com/arico-dev" target="_blank" rel="noopener" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://x.com/TL_Excalibur" target="_blank" rel="noopener" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        <span>X / Twitter</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Si ves esto, ¡gracias por visitar mi portafolio!</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
