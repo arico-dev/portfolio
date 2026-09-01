@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import {
   PhArrowRight,
@@ -22,8 +22,27 @@ const mail = atob('YWxsZW4uYXJlQHByb3Rvbi5tZQ==')
 const skills = computed(() => tm('sobre.skills'))
 const formacion = computed(() => tm('formacion.items'))
 
+watch(
+  () => locale.value,
+  () => {
+    document.title = t('site.title')
+    const desc = t('site.description')
+    document.querySelector('meta[name="description"]')?.setAttribute('content', desc)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', t('site.title'))
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', desc)
+    document.documentElement.lang = locale.value
+  },
+  { immediate: true }
+)
+
 const menuOpen = ref(false)
 const all = PROJECTS
+const nameToggled = ref(false)
+const canHover = ref(false)
+
+function toggleName() {
+  if (!canHover.value) nameToggled.value = !nameToggled.value
+}
 
 const nav = computed(() => [
   { label: t('nav.proyectos'), href: '#proyectos' },
@@ -60,6 +79,7 @@ const activeProject = computed(() =>
 )
 
 onMounted(() => {
+  canHover.value = window.matchMedia('(hover: hover)').matches
   parseHash()
   window.addEventListener('hashchange', parseHash)
 })
@@ -111,6 +131,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         <ThemeToggle />
         <button
           type="button"
+          data-locale-toggle
           class="grid h-10 w-10 place-items-center border-2 border-line font-mono text-xs font-bold text-ink transition-colors hover:bg-accent hover:text-accentink"
           :aria-label="locale === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish'"
           @click="toggleLocale"
@@ -161,16 +182,27 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
     <!-- ============ HERO ============ -->
     <section class="relative flex min-h-[calc(100dvh-66px)] flex-col">
       <div
-        class="mx-auto flex w-full max-w-6xl flex-1 items-center gap-10 px-5 py-12 md:grid md:grid-cols-5 md:py-16"
+        class="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center gap-10 px-5 py-12 md:grid md:grid-cols-5 md:py-16"
       >
         <div class="md:col-span-3">
           <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
             {{ t('hero.hola') }}
           </p>
-          <h1 class="mt-3 text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-            <span class="group inline-block cursor-default">
+          <h1 class="mt-3 text-4xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+            <span
+              class="group inline-block cursor-default"
+              role="button"
+              tabindex="0"
+              :aria-label="nameToggled ? 'Anthony Allen' : 'arico-dev'"
+              @click="toggleName"
+              @keydown.enter="toggleName"
+              @keydown.space.prevent="toggleName"
+            >
               <span class="block h-[0.95em] overflow-hidden">
-                <span class="block transition-transform duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none group-hover:-translate-y-[0.95em]">
+                <span
+                  class="block transition-transform duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none"
+                  :class="canHover ? 'group-hover:-translate-y-[0.95em]' : nameToggled ? '-translate-y-[0.95em]' : 'translate-y-0'"
+                >
                   <span class="block">arico-<span class="text-accent">dev</span></span>
                   <span class="block">Anthony Allen</span>
                 </span>

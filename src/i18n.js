@@ -2,6 +2,10 @@ import { createI18n } from 'vue-i18n'
 
 const messages = {
   es: {
+    site: {
+      title: 'arico-dev │ Desarrollador Web',
+      description: 'Portfolio de arico-dev, desarrollador web. React, Next.js, Kotlin y más. Proyectos, educación y formas de contacto.',
+    },
     nav: {
       proyectos: 'Proyectos',
       sobre: 'Sobre',
@@ -82,6 +86,10 @@ const messages = {
     },
   },
   en: {
+    site: {
+      title: 'arico-dev │ Web Developer',
+      description: 'Portfolio of arico-dev, web developer. React, Next.js, Kotlin and more. Projects, education and ways to get in touch.',
+    },
     nav: {
       proyectos: 'Projects',
       sobre: 'About',
