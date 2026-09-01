@@ -102,7 +102,7 @@ const nav = [
     <section class="relative">
       <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-14 md:grid-cols-5 md:pt-20">
         <div class="md:col-span-3">
-          <p class="font-mono text-xs uppercase tracking-[0.2em] text-faint">
+          <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
             Hola, soy
           </p>
           <h1 class="mt-3 text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
@@ -132,7 +132,7 @@ const nav = [
         <!-- index / status block -->
         <div class="md:col-span-2">
           <div class="border-2 border-line bg-raise p-6">
-            <p class="font-mono text-xs uppercase tracking-[0.2em] text-faint">
+            <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
               Estado
             </p>
             <ul class="mt-4 space-y-3 text-sm">
@@ -202,7 +202,7 @@ const nav = [
         <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
           <div class="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p class="font-mono text-xs uppercase tracking-[0.2em] text-faint">
+              <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
                 Trabajo
               </p>
               <h2 class="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">
@@ -286,7 +286,7 @@ const nav = [
     <div class="mx-auto max-w-6xl px-5 py-14 md:py-16">
       <div class="grid items-center gap-8 md:grid-cols-2">
         <div>
-          <p class="font-mono text-xs uppercase tracking-[0.2em] text-faint">
+          <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
             ¿Un proyecto en mente?
           </p>
           <p class="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">
