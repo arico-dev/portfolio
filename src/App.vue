@@ -41,7 +41,7 @@ const nameToggled = ref(false)
 const canHover = ref(false)
 
 function toggleName() {
-  if (!canHover.value) nameToggled.value = !nameToggled.value
+  nameToggled.value = !nameToggled.value
 }
 
 const nav = computed(() => [
@@ -201,7 +201,10 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
               <span class="block h-[0.95em] overflow-hidden">
                 <span
                   class="block transition-transform duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none"
-                  :class="canHover ? 'group-hover:-translate-y-[0.95em]' : nameToggled ? '-translate-y-[0.95em]' : 'translate-y-0'"
+                  :class="[
+                    nameToggled ? '-translate-y-[0.95em]' : 'translate-y-0',
+                    canHover ? 'group-hover:-translate-y-[0.95em]' : '',
+                  ]"
                 >
                   <span class="block">arico-<span class="text-accent">dev</span></span>
                   <span class="block">Anthony Allen</span>
