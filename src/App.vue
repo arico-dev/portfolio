@@ -16,7 +16,6 @@ const menuOpen = ref(false)
 const all = PROJECTS
 
 const nav = [
-  { label: 'Stack', href: '#stack' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Sobre', href: '#sobre' },
 ]
@@ -99,8 +98,10 @@ const nav = [
 
   <main id="contenido">
     <!-- ============ HERO ============ -->
-    <section class="relative">
-      <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-14 md:grid-cols-5 md:pt-20">
+    <section class="relative flex min-h-[calc(100dvh-66px)] flex-col">
+      <div
+        class="mx-auto flex w-full max-w-6xl flex-1 items-center gap-10 px-5 py-12 md:grid md:grid-cols-5 md:py-16"
+      >
         <div class="md:col-span-3">
           <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
             Hola, soy
@@ -109,24 +110,31 @@ const nav = [
             arico<span class="text-accent">.</span>dev
           </h1>
           <p class="mt-5 max-w-md text-lg text-soft">
-            Desarrollador web y estudiante. Construyo aplicaciones web con
-            React, Next.js y Vue, y aplicaciones móviles con Kotlin.
+            Soy estudiante y todavía no soy desarrollador, pero es lo que me
+            gusta hacer. Construyo aplicaciones web con React, Next.js y Vue,
+            y aplicaciones móviles con Kotlin.
           </p>
-          <div class="mt-7 flex flex-wrap gap-3">
-            <a
-              href="#proyectos"
-              class="inline-flex items-center gap-2 bg-accent px-5 py-3 font-mono text-sm font-bold uppercase tracking-wider text-accentink transition-colors hover:bg-ink hover:text-bg"
-            >
-              Ver proyectos
-              <PhArrowRight :size="16" weight="bold" />
-            </a>
-            <a
-              href="mailto:hello@arico.dev"
-              class="inline-flex items-center gap-2 border-2 border-line px-5 py-3 font-mono text-sm font-bold uppercase tracking-wider transition-colors hover:bg-raise"
-            >
-              Contacto
-            </a>
-          </div>
+
+          <ul
+            class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-6"
+            aria-label="Stack de tecnologías"
+          >
+            <li v-for="item in STACK" :key="item.label" class="group relative">
+              <img
+                :src="item.src"
+                :alt="item.label"
+                :class="['h-8 w-8 transition-transform group-hover:scale-110', item.invert && 'stack-icon-invert']"
+                width="32"
+                height="32"
+                loading="lazy"
+              />
+              <span
+                class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap border-2 border-line bg-bg px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-ink opacity-0 transition-opacity group-hover:opacity-100"
+              >
+                {{ item.label }}
+              </span>
+            </li>
+          </ul>
         </div>
 
         <!-- index / status block -->
@@ -161,63 +169,22 @@ const nav = [
 
       <!-- scroll cue -->
       <a
-        href="#stack"
-        class="mx-auto mb-6 flex max-w-6xl items-center gap-2 px-5 font-mono text-xs uppercase tracking-wider text-faint transition-colors hover:text-accent"
+        href="#proyectos"
+        class="mx-auto mb-10 flex max-w-6xl items-center gap-2 px-5 font-mono text-xs uppercase tracking-wider text-faint transition-colors hover:text-accent"
       >
         <PhArrowDown :size="14" weight="bold" />
-        Stack
+        Proyectos
       </a>
-    </section>
-
-    <!-- ============ STACK ============ -->
-    <section id="stack" class="border-t-2 border-line">
-      <Reveal>
-        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
-          <h2 class="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">
-            Stack
-          </h2>
-
-          <ul class="mt-10 divide-y-2 divide-line border-y-2 border-line">
-            <li
-              v-for="item in STACK"
-              :key="item.label"
-              class="reveal grid grid-cols-2 items-center gap-4 py-4 transition-colors hover:bg-raise sm:grid-cols-[1fr_10rem_1fr] sm:px-4"
-            >
-              <span class="text-base font-semibold sm:text-lg">{{ item.label }}</span>
-              <span class="hidden font-mono text-xs uppercase tracking-wider text-faint sm:block">
-                —————
-              </span>
-              <span class="justify-self-start font-mono text-xs uppercase tracking-wider text-soft sm:justify-self-end">
-                {{ item.level }}
-              </span>
-            </li>
-          </ul>
-        </div>
-      </Reveal>
     </section>
 
     <!-- ============ PROYECTOS ============ -->
     <section id="proyectos" class="border-t-2 border-line">
       <Reveal>
         <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
-          <div class="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
-                Trabajo
-              </p>
-              <h2 class="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">
-                Proyectos
-              </h2>
-            </div>
-            <a
-              href="https://github.com/arico-dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 border-2 border-line px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-colors hover:bg-accent hover:text-accentink"
-            >
-              <PhGithubLogo :size="14" weight="bold" />
-              GitHub
-            </a>
+          <div>
+            <h2 class="text-3xl font-black uppercase tracking-tight sm:text-4xl">
+              Proyectos
+            </h2>
           </div>
 
           <p class="mt-4 max-w-prose text-soft">
@@ -247,34 +214,29 @@ const nav = [
           </div>
           <div class="md:col-span-3">
             <p class="text-lg text-ink">
-              Soy <span class="font-bold">arico-dev</span>, desarrollador web y
-              estudiante. Me gusta pasar ideas reales a producto: desde
-              sistemas de gestión hasta juegos y apps móviles.
+              Soy <span class="font-bold">arico-dev</span>, estudiante. Aún
+              no soy desarrollador, pero es lo que me gusta hacer: me encanta
+              pasar ideas reales a producto, desde sistemas de gestión hasta
+              juegos y apps móviles.
             </p>
-            <p class="mt-4 max-w-prose text-soft">
-              Trabajo principalmente con el ecosistema JavaScript (React,
-              Next.js, Vue) y con Kotlin para Android. Publico mi código en
-              GitHub y me gusta mantener cada proyecto documentado y listo
-              para que otros aprendan de él.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a
-                href="https://github.com/arico-dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 border-2 border-line px-4 py-2 font-mono text-sm font-bold uppercase tracking-wider transition-colors hover:bg-accent hover:text-accentink"
-              >
-                <PhGithubLogo :size="16" weight="bold" />
-                GitHub
-              </a>
-              <a
-                href="mailto:hello@arico.dev"
-                class="inline-flex items-center gap-2 border-2 border-line px-4 py-2 font-mono text-sm font-bold uppercase tracking-wider transition-colors hover:bg-raise"
-              >
-                <PhEnvelope :size="16" weight="bold" />
-                Contacto
-              </a>
-            </div>
+            <ul class="mt-6 grid gap-2 border-2 border-line p-6 sm:grid-cols-2">
+              <li class="flex items-center gap-2 text-soft">
+                <span class="text-accent">▸</span>
+                React, Next.js y Vue
+              </li>
+              <li class="flex items-center gap-2 text-soft">
+                <span class="text-accent">▸</span>
+                Kotlin para Android
+              </li>
+              <li class="flex items-center gap-2 text-soft">
+                <span class="text-accent">▸</span>
+                Código documentado en GitHub
+              </li>
+              <li class="flex items-center gap-2 text-soft">
+                <span class="text-accent">▸</span>
+                Open source y con fines de aprendizaje
+              </li>
+            </ul>
           </div>
         </div>
       </Reveal>

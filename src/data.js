@@ -1,7 +1,7 @@
 // Real project data mirrored from github.com/arico-dev (fetched Sep 2026)
 export const PROFILE = {
   handle: 'arico-dev',
-  role: 'Desarrollador Web',
+  role: 'Estudiante',
   student: true,
   location: '',
   website: 'https://github.com/arico-dev',
@@ -59,14 +59,14 @@ export const PROJECTS = [
 ]
 
 export const STACK = [
-  { label: 'JavaScript', level: 'Alto' },
-  { label: 'TypeScript', level: 'Alto' },
-  { label: 'React', level: 'Alto' },
-  { label: 'Next.js', level: 'Alto' },
-  { label: 'Vue', level: 'Medio' },
-  { label: 'Kotlin', level: 'Medio' },
-  { label: 'Python / Django', level: 'Medio' },
-  { label: 'PHP', level: 'Medio' },
-  { label: 'Tailwind CSS', level: 'Alto' },
-  { label: 'Git / GitHub', level: 'Alto' },
+  { label: 'JavaScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg' },
+  { label: 'TypeScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg' },
+  { label: 'React', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg' },
+  { label: 'Next.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nextjs/nextjs-original.svg', invert: true },
+  { label: 'Vue', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vuejs/vuejs-original.svg' },
+  { label: 'Kotlin', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/kotlin/kotlin-original.svg' },
+  { label: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg' },
+  { label: 'PHP', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-original.svg' },
+  { label: 'Tailwind CSS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg' },
+  { label: 'Git', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg' },
 ]

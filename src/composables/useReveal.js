@@ -1,38 +1,61 @@
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
 
-// Adds a `.is-visible` class to every `.reveal` element once it enters the
+// Adds an `.is-visible` class to every `.reveal` element once it enters the
 // viewport. Pure IntersectionObserver - no scroll listeners, honors the CSS
 // reduced-motion fallback in style.css.
+//
+// Observes against the viewport (document), not a component-scoped ref: a
+// ref bound to a `display: contents` wrapper resolves to null, which would
+// silently leave `.reveal` elements at opacity 0.
 export function useReveal() {
-  const root = ref(null)
   let observer = null
+  let fallbackTimer = null
+
+  const reveal = (el) => el.classList.add('is-visible')
+
+  const observePending = (scope) => {
+    if (!scope) return
+    scope.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => observer.observe(el))
+  }
 
   onMounted(() => {
-    if (typeof IntersectionObserver === 'undefined') return
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
-            observer.unobserve(entry.target)
+
+    if (typeof IntersectionObserver === 'undefined' || reduce) {
+      // No observer or reduced motion: reveal everything right away.
+      document.querySelectorAll('.reveal').forEach(reveal)
+      return
+    }
+
+    if (!observer) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              reveal(entry.target)
+              observer.unobserve(entry.target)
+            }
           }
-        }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-    )
-    // Observe within the component's own subtree only, after mount.
-    requestAnimationFrame(() => {
-      const scope = root.value
-      if (!scope) return
-      scope.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
-    })
-    if (reduce) return
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      )
+    }
+
+    // Each mount (i.e. each <Reveal>) (re)observes the pending elements.
+    requestAnimationFrame(observePending.bind(null, document))
+    // Fail-safe: never leave content hidden if the observer misbehaves.
+    if (!fallbackTimer) {
+      fallbackTimer = window.setTimeout(() => {
+        // One fallback for the whole page; once visible everything stays.
+        document.querySelectorAll('.reveal').forEach(reveal)
+      }, 1200)
+    }
   })
 
   onBeforeUnmount(() => {
     observer?.disconnect()
+    if (fallbackTimer) window.clearTimeout(fallbackTimer)
   })
 
-  return { root }
+  return {}
 }

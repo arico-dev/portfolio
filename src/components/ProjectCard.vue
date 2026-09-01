@@ -6,33 +6,16 @@ defineProps({
   project: { type: Object, required: true },
 })
 
-const langColors = {
-  Vue: '#41b883',
-  TypeScript: '#3178c6',
-  PHP: '#777bb4',
-  Kotlin: '#a97bff',
-  Python: '#3573a5',
-}
+
 </script>
 
 <template>
   <article
     class="reveal group grid gap-5 border-2 border-line bg-bg p-6 transition-colors hover:bg-raise sm:grid-cols-[4rem_1fr] sm:p-8"
   >
-    <div class="flex flex-col items-start gap-2" aria-hidden="true">
+    <div class="flex items-start" aria-hidden="true">
       <span class="font-mono text-lg font-bold leading-none text-accent">
         /{{ index }}
-      </span>
-      <span
-        v-if="project.language"
-        class="inline-flex items-center gap-1.5 border border-line px-2 py-0.5 font-mono text-xs"
-        :title="`Lenguaje principal: ${project.language}`"
-      >
-        <span
-          class="h-2 w-2 rounded-full"
-          :style="{ backgroundColor: langColors[project.language] || '#888' }"
-        ></span>
-        {{ project.language }}
       </span>
     </div>
 
@@ -61,7 +44,7 @@ const langColors = {
         <li
           v-for="tech in project.stack"
           :key="tech"
-          class="border border-line px-2 py-0.5 font-mono text-xs uppercase tracking-wider"
+          class="border border-line px-2 py-0.5 font-mono text-xs uppercase tracking-wider whitespace-nowrap"
         >
           {{ tech }}
         </li>

@@ -5,11 +5,11 @@ import { useReveal } from '../composables/useReveal'
 defineProps({
   tag: { type: String, default: 'div' },
 })
-const { root } = useReveal()
+useReveal()
 </script>
 
 <template>
-  <component :is="tag" :ref="root" class="contents">
+  <component :is="tag" class="contents">
     <slot />
   </component>
 </template>

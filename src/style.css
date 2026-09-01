@@ -49,6 +49,9 @@ html {
 html[data-theme="dark"] {
   color-scheme: dark;
 }
+html[data-theme="dark"] .stack-icon-invert {
+  filter: invert(1);
+}
 
 body {
   background: var(--bg);
