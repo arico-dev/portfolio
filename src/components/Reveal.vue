@@ -1,0 +1,15 @@
+<script setup>
+import { useReveal } from '../composables/useReveal'
+
+// Sets up scroll-in reveal for any `.reveal` elements inside this component.
+defineProps({
+  tag: { type: String, default: 'div' },
+})
+const { root } = useReveal()
+</script>
+
+<template>
+  <component :is="tag" :ref="root" class="contents">
+    <slot />
+  </component>
+</template>

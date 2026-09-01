@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   arico-dev portfolio - brutalist tokens
+   Single accent: BURNT ORANGE. Radius 0 everywhere. Hard 2px borders.
+   Light = paper, Dark = ink. No gradients, no soft shadows.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #f2efe9;
+  --bg-raise: #e9e5dc;
+  --ink: #111110;
+  --ink-soft: #4b4a46;
+  --ink-faint: #8a8881;
+  --accent: #c4401e;
+  --accent-ink: #fff;
+  --border: #111110;
+  --font-sans: "Space Grotesk", "Söhne", "Helvetica Neue", ui-sans-serif, system-ui, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+}
+
+[data-theme="dark"] {
+  --bg: #0d0d0d;
+  --bg-raise: #161616;
+  --ink: #e8e6e1;
+  --ink-soft: #9d9a92;
+  --ink-faint: #5d5b55;
+  --accent: #e2583e;
+  --accent-ink: #140a06;
+  --border: #e8e6e1;
+}
+
+/* Tailwind v4 token namespace */
+@theme {
+  --color-bg: var(--bg);
+  --color-raise: var(--bg-raise);
+  --color-ink: var(--ink);
+  --color-soft: var(--ink-soft);
+  --color-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accentink: var(--accent-ink);
+  --color-line: var(--border);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Thin-but-graphical scrollbar keyed to theme */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--ink-faint); border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-soft); }
+
+/* Sweat-line reveal for scroll-in elements (driven by IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
