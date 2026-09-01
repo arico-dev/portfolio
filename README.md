@@ -1,8 +1,10 @@
 # Portfolio · arico-dev
 
-Portfolio personal brutalista de **arico-dev**, estudiante y aspirante a desarrollador web.
+Portfolio personal brutalista de **arico-dev** ([arico.is-a.dev](https://arico.is-a.dev)), estudiante y aspirante a desarrollador web.
 
 Construido con **Vue 3** (`<script setup>`), **Vite** y **Tailwind CSS v4**, con iconos **Phosphor**. Diseño brutalista/minimalista con modo claro y oscuro, responsive, soporte de `prefers-reduced-motion`, y bilingüe **español/inglés** con detección del idioma del navegador.
+
+Optimizado para velocidad: el header + hero se pre-renderizan como HTML estático en `index.html` (LCP sin esperar el JS) y la pantalla de preview de proyectos se divide en un chunk bajo demanda.
 
 ## Stack
 
@@ -15,9 +17,10 @@ Construido con **Vue 3** (`<script setup>`), **Vite** y **Tailwind CSS v4**, con
 
 ## Secciones
 
-- Hero con identidad y estado
-- Stack de tecnologías (iconos de marca con tooltip)
+- Hero con identidad y estado; el nombre alterna entre alias y nombre real (hover en desktop, tap en móvil)
+- Stack de tecnologías (iconos de marca con label en móvil y tooltip en desktop)
 - Proyectos reales con botón **Preview** → pantalla de capturas por proyecto
+- Formación
 - Sobre mí
 - Contacto
 
@@ -25,9 +28,12 @@ Construido con **Vue 3** (`<script setup>`), **Vite** y **Tailwind CSS v4**, con
 
 - `src/i18n.js` — todos los textos visibles en `es` y `en`
 - `src/data.js` — datos no traducibles (slugs, urls, stack, capturas)
-- `src/App.vue` — layout, routing por hash (`#/preview/<slug>`) y toggles de tema/idioma
-- `src/components/ProjectCard.vue` y `ProjectPreview.vue` — cards y pantalla de preview
+- `src/App.vue` — layout, routing por hash (`#/preview/<slug>`), toggles de tema/idioma, SEO dinámico (título, metadatos y `lang` por idioma)
+- `src/components/ProjectCard.vue` y `ProjectPreview.vue` — cards y pantalla de preview (cargada bajo demanda)
+- `public/favicon.svg` — favicon propio
 - `public/projects/<slug>/` — capturas reales de cada proyecto (placeholder automático si falta el archivo)
+
+> El hero estático dentro de `#app` en `index.html` es un espejo del render de Vue: pinta de inmediato y Vue lo reemplaza al montar sin parpadeo. Al editar el hero, actualizá también ese shell.
 
 ## Idioma
 
