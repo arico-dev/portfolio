@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, defineAsyncComponent, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import {
   PhArrowRight,
@@ -12,7 +12,7 @@ import {
 import ThemeToggle from './components/ThemeToggle.vue'
 import Reveal from './components/Reveal.vue'
 import ProjectCard from './components/ProjectCard.vue'
-import ProjectPreview from './components/ProjectPreview.vue'
+const ProjectPreview = defineAsyncComponent(() => import('./components/ProjectPreview.vue'))
 import { PROFILE, PROJECTS, STACK } from './data'
 
 const { t, tm, locale } = useI18n()
