@@ -1,21 +1,39 @@
 <script setup>
-import { PhArrowUpRight, PhGithubLogo, PhGlobe } from '@phosphor-icons/vue'
+import { PhArrowUpRight, PhGithubLogo } from '@phosphor-icons/vue'
 
 defineProps({
   index: { type: String, required: true },
   project: { type: Object, required: true },
 })
+
+const langColors = {
+  Vue: '#41b883',
+  TypeScript: '#3178c6',
+  PHP: '#777bb4',
+  Kotlin: '#a97bff',
+  Python: '#3573a5',
+}
 </script>
 
 <template>
   <article
-    class="reveal group grid gap-4 border-2 border-line bg-bg p-6 transition-colors hover:bg-raise sm:grid-cols-[3.5rem_1fr] sm:p-8"
+    class="reveal group grid gap-5 border-2 border-line bg-bg p-6 transition-colors hover:bg-raise sm:grid-cols-[4rem_1fr] sm:p-8"
   >
-    <div
-      class="font-mono text-lg font-bold leading-none text-accent"
-      aria-hidden="true"
-    >
-      /{{ index }}
+    <div class="flex flex-col items-start gap-2" aria-hidden="true">
+      <span class="font-mono text-lg font-bold leading-none text-accent">
+        /{{ index }}
+      </span>
+      <span
+        v-if="project.language"
+        class="inline-flex items-center gap-1.5 border border-line px-2 py-0.5 font-mono text-xs"
+        :title="`Lenguaje principal: ${project.language}`"
+      >
+        <span
+          class="h-2 w-2 rounded-full"
+          :style="{ backgroundColor: langColors[project.language] || '#888' }"
+        ></span>
+        {{ project.language }}
+      </span>
     </div>
 
     <div class="min-w-0">
@@ -23,9 +41,18 @@ defineProps({
         <h3 class="text-2xl font-bold uppercase tracking-tight sm:text-3xl">
           {{ project.human }}
         </h3>
-        <span class="font-mono text-xs uppercase tracking-wider text-faint">
-          {{ project.kind }}
-        </span>
+        <div class="flex items-center gap-2">
+          <span
+            v-if="project.demo"
+            class="inline-flex items-center gap-1.5 bg-accent px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-accentink"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-accentink"></span>
+            Live
+          </span>
+          <span class="font-mono text-xs uppercase tracking-wider text-faint">
+            {{ project.kind }}
+          </span>
+        </div>
       </div>
 
       <p class="mt-3 max-w-prose text-soft">{{ project.description }}</p>

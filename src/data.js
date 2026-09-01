@@ -9,15 +9,27 @@ export const PROFILE = {
 
 export const PROJECTS = [
   {
+    name: 'portfolio',
+    human: 'Este portfolio',
+    kind: 'Web',
+    stack: ['Vue', 'Vite', 'Tailwind'],
+    description:
+      'El sitio que estás viendo: portfolio brutalista con modo claro/oscuro, responsive y reveal-on-scroll con IntersectionObserver.',
+    url: 'https://github.com/arico-dev/portfolio',
+    demo: '',
+    language: 'Vue',
+    featured: false,
+  },
+  {
     name: 'destiny2-guessing-game',
     human: 'Destiny 2 Guessing Game',
-    kind: 'Web app',
-    stack: ['TypeScript', 'Next.js', 'Tailwind'],
+    kind: 'Web game',
+    stack: ['TypeScript', 'Next.js', 'Tailwind', 'Bungie API'],
     description:
-      'Juego de adivinar estilo Wordle de Destiny 2, alimentado por la API de Bungie: armas, armaduras y perks exóticos desde el manifiesto.',
+      'Wordle-style guessing game de Destiny 2 alimentado por la API de Bungie: armas, armaduras y perks exóticos desde el manifiesto. Desplegado en Vercel.',
     url: 'https://github.com/arico-dev/destiny2-guessing-game',
     demo: 'https://destiny2-guessing-game.vercel.app',
-    license: 'MIT',
+    language: 'TypeScript',
     featured: true,
   },
   {
@@ -26,46 +38,22 @@ export const PROJECTS = [
     kind: 'Web app',
     stack: ['PHP', 'MySQL', 'SQL'],
     description:
-      'Gestión de actividades deportivas para una institución educativa: estudiantes, entrenadores, disciplinas, inscripciones, asistencias y evaluaciones.',
+      'Aplicación web de gestión deportiva para una institución educativa: estudiantes, entrenadores, disciplinas, inscripciones, asistencias y evaluaciones de rendimiento. Con demo desplegada.',
     url: 'https://github.com/arico-dev/Sistema-Deportivo-',
     demo: 'https://sporttrack.page.gd/login.php',
-    license: 'MIT',
+    language: 'PHP',
     featured: true,
-  },
-  {
-    name: 'FastFood-Django',
-    human: 'FastFood (Django)',
-    kind: 'Web app',
-    stack: ['Python', 'Django', 'REST'],
-    description:
-      'Gestión de catálogo, carrito y ventas de un local de comida rápida. Incluye API REST, fixtures de ejemplo y panel de administración.',
-    url: 'https://github.com/arico-dev/FastFood-Django',
-    demo: '',
-    license: '',
-    featured: false,
-  },
-  {
-    name: 'FastFood-XAMPP-main',
-    human: 'FastFood Express',
-    kind: 'Web app',
-    stack: ['JavaScript', 'XAMPP', 'MySQL'],
-    description:
-      'Demo completa de e-commerce para comida rápida: catálogo, carrito y checkout, CRUD con login, validación en tiempo real y seguimiento de ventas.',
-    url: 'https://github.com/arico-dev/FastFood-XAMPP-main',
-    demo: '',
-    license: '',
-    featured: false,
   },
   {
     name: 'Arduino-IoT-Hub',
     human: 'Arduino IoT Hub',
     kind: 'App móvil',
-    stack: ['Kotlin', 'Android', 'Bluetooth'],
+    stack: ['Kotlin', 'Android', 'Bluetooth Classic'],
     description:
-      'App móvil con interfaz centralizada para interactuar con proyectos de electrónica sobre Arduino mediante comunicación serial Bluetooth Classic.',
+      'App móvil con interfaz centralizada para la interacción bidireccional con proyectos de electrónica y automatización basados en Arduino, usando comunicación serial Bluetooth Classic.',
     url: 'https://github.com/arico-dev/Arduino-IoT-Hub',
     demo: '',
-    license: '',
+    language: 'Kotlin',
     featured: false,
   },
 ]
