@@ -45,6 +45,7 @@
 
 html {
   color-scheme: light;
+  scroll-behavior: smooth;
 }
 html[data-theme="dark"] {
   color-scheme: dark;
@@ -83,6 +84,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .reveal {
     opacity: 1;
     transform: none;

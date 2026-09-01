@@ -1,10 +1,15 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { PhArrowUpRight, PhGithubLogo, PhImages } from '@phosphor-icons/vue'
+
+const { t } = useI18n()
 
 const props = defineProps({
   index: { type: String, required: true },
   project: { type: Object, required: true },
 })
+
+const pkey = () => `projects.${props.project.slug}`
 
 function openPreview() {
   window.location.hash = `/preview/${props.project.slug}`
@@ -24,7 +29,7 @@ function openPreview() {
     <div class="min-w-0">
       <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 class="text-2xl font-bold uppercase tracking-tight sm:text-3xl">
-          {{ project.human }}
+          {{ t(pkey() + '.human') }}
         </h3>
         <div class="flex items-center gap-2">
           <span
@@ -32,17 +37,17 @@ function openPreview() {
             class="inline-flex items-center gap-1.5 bg-accent px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-accentink"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-accentink"></span>
-            Live
+            {{ t('proyectos.live') }}
           </span>
           <span class="font-mono text-xs uppercase tracking-wider text-faint">
-            {{ project.kind }}
+            {{ t(pkey() + '.kind') }}
           </span>
         </div>
       </div>
 
-      <p class="mt-3 max-w-prose text-soft">{{ project.description }}</p>
+      <p class="mt-3 max-w-prose text-soft">{{ t(pkey() + '.description') }}</p>
 
-      <ul class="mt-4 flex flex-wrap gap-2" aria-label="Tecnologías">
+      <ul class="mt-4 flex flex-wrap gap-2" :aria-label="t('proyectos.tecnologias')">
         <li
           v-for="tech in project.stack"
           :key="tech"
@@ -60,7 +65,7 @@ function openPreview() {
           class="inline-flex items-center gap-2 border-2 border-line px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-colors hover:bg-accent hover:text-accentink"
         >
           <PhGithubLogo :size="14" weight="bold" />
-          Código
+          {{ t('proyectos.codigo') }}
         </a>
         <a
           v-if="project.demo"
@@ -69,7 +74,7 @@ function openPreview() {
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 bg-accent px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider text-accentink transition-colors hover:bg-ink hover:text-bg"
         >
-          Ver demo
+          {{ t('proyectos.verDemo') }}
           <PhArrowUpRight :size="14" weight="bold" />
         </a>
         <button
@@ -78,7 +83,7 @@ function openPreview() {
           @click="openPreview"
         >
           <PhImages :size="14" weight="bold" />
-          Preview
+          {{ t('proyectos.preview') }}
         </button>
       </div>
     </div>

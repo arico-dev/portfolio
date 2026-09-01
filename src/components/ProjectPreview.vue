@@ -1,19 +1,24 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { PhArrowLeft, PhGithubLogo, PhArrowUpRight, PhImages } from '@phosphor-icons/vue'
+
+const { t, tm } = useI18n()
 
 const props = defineProps({
   project: { type: Object, required: true },
 })
 
+const pkey = () => `projects.${props.project.slug}`
+const captions = () => tm(pkey() + '.shots')
 const failed = ref({})
 
 function closePreview() {
   history.back()
 }
 
-function onImageError(slug) {
-  failed.value = { ...failed.value, [slug]: true }
+function onImageError(src) {
+  failed.value = { ...failed.value, [src]: true }
 }
 </script>
 
@@ -28,7 +33,7 @@ function onImageError(slug) {
           @click="closePreview"
         >
           <PhArrowLeft :size="14" weight="bold" />
-          Volver
+          {{ t('preview.volver') }}
         </button>
         <p class="font-mono text-xs uppercase tracking-wider text-faint">
           <span class="text-accent">~/</span>preview / {{ project.slug }}
@@ -38,11 +43,11 @@ function onImageError(slug) {
       <!-- header -->
       <div class="mt-10 max-w-3xl">
         <h1 class="text-4xl font-black uppercase tracking-tight sm:text-5xl">
-          {{ project.human }}
+          {{ t(pkey() + '.human') }}
         </h1>
-        <p class="mt-4 max-w-prose text-soft">{{ project.description }}</p>
+        <p class="mt-4 max-w-prose text-soft">{{ t(pkey() + '.description') }}</p>
 
-        <ul class="mt-5 flex flex-wrap gap-2" aria-label="Tecnologías">
+        <ul class="mt-5 flex flex-wrap gap-2" :aria-label="t('proyectos.tecnologias')">
           <li
             v-for="tech in project.stack"
             :key="tech"
@@ -60,7 +65,7 @@ function onImageError(slug) {
             class="inline-flex items-center gap-2 border-2 border-line px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-colors hover:bg-accent hover:text-accentink"
           >
             <PhGithubLogo :size="14" weight="bold" />
-            Código
+            {{ t('proyectos.codigo') }}
           </a>
           <a
             v-if="project.demo"
@@ -69,7 +74,7 @@ function onImageError(slug) {
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 bg-accent px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider text-accentink transition-colors hover:bg-ink hover:text-bg"
           >
-            Ver demo
+            {{ t('proyectos.verDemo') }}
             <PhArrowUpRight :size="14" weight="bold" />
           </a>
         </div>
@@ -78,12 +83,12 @@ function onImageError(slug) {
       <!-- gallery -->
       <div class="mt-14">
         <p class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-soft">
-          Capturas
+          {{ t('preview.capturas') }}
         </p>
 
         <div v-if="project.preview && project.preview.shots.length" class="mt-6 grid gap-8 md:grid-cols-2">
           <figure
-            v-for="shot in project.preview.shots"
+            v-for="(shot, i) in project.preview.shots"
             :key="shot.src"
             class="border-2 border-line bg-raise"
           >
@@ -91,7 +96,7 @@ function onImageError(slug) {
               <img
                 v-if="!failed[shot.src]"
                 :src="shot.src"
-                :alt="shot.caption"
+                :alt="captions()[i]"
                 class="h-full w-full object-cover"
                 loading="lazy"
                 @error="onImageError(shot.src)"
@@ -100,19 +105,19 @@ function onImageError(slug) {
               <div v-else class="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
                 <PhImages :size="32" weight="bold" class="text-faint" />
                 <span class="font-mono text-xs font-bold uppercase tracking-wider text-faint">
-                  Placeholder
+                  {{ t('preview.placeholder') }}
                 </span>
                 <code class="font-mono text-xs text-soft break-all">{{ shot.src }}</code>
               </div>
             </div>
             <figcaption class="border-t-2 border-line px-4 py-3 font-mono text-xs uppercase tracking-wider text-soft">
-              {{ shot.caption }}
+              {{ captions()[i] }}
             </figcaption>
           </figure>
         </div>
 
         <p v-else class="mt-6 border-2 border-dashed border-line p-6 font-mono text-sm text-soft">
-          Sin capturas definidas para este proyecto todavía.
+          {{ t('preview.sinCapturas') }}
         </p>
       </div>
     </div>

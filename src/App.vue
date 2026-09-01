@@ -1,11 +1,13 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import {
   PhArrowRight,
   PhArrowDown,
   PhGithubLogo,
   PhEnvelope,
   PhGraduationCap,
+  PhTranslate,
 } from '@phosphor-icons/vue'
 import ThemeToggle from './components/ThemeToggle.vue'
 import Reveal from './components/Reveal.vue'
@@ -13,13 +15,27 @@ import ProjectCard from './components/ProjectCard.vue'
 import ProjectPreview from './components/ProjectPreview.vue'
 import { PROFILE, PROJECTS, STACK } from './data'
 
+const { t, tm, locale } = useI18n()
+
+const skills = computed(() => tm('sobre.skills'))
+
 const menuOpen = ref(false)
 const all = PROJECTS
 
-const nav = [
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Sobre', href: '#sobre' },
-]
+const nav = computed(() => [
+  { label: t('nav.proyectos'), href: '#proyectos' },
+  { label: t('nav.sobre'), href: '#sobre' },
+])
+
+function toggleLocale() {
+  const next = locale.value === 'es' ? 'en' : 'es'
+  locale.value = next
+  try {
+    localStorage.setItem('pf-locale', next)
+  } catch (e) {
+    /* ignore */
+  }
+}
 
 // --- Preview routing via location.hash (#/preview/:slug) ---
 const PREVIEW_PREFIX = '#/preview/'
@@ -90,11 +106,20 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
 
       <div class="flex items-center gap-2">
         <ThemeToggle />
+        <button
+          type="button"
+          class="grid h-10 w-10 place-items-center border-2 border-line font-mono text-xs font-bold text-ink transition-colors hover:bg-accent hover:text-accentink"
+          :aria-label="locale === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish'"
+          @click="toggleLocale"
+        >
+          <PhTranslate :size="18" weight="bold" />
+          <span class="sr-only">{{ locale === 'es' ? 'EN' : 'ES' }}</span>
+        </button>
         <a
           href="mailto:hello@arico.dev"
           class="hidden items-center gap-2 border-2 border-line px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-colors hover:bg-accent hover:text-accentink sm:inline-flex"
         >
-          Contacto
+          {{ t('nav.contacto') }}
           <PhArrowRight :size="13" weight="bold" />
         </a>
         <button
@@ -123,7 +148,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
           {{ item.label }}
         </a>
         <a href="mailto:hello@arico.dev" class="py-3 font-bold text-accent" @click="menuOpen = false">
-          Contacto
+          {{ t('nav.contacto') }}
         </a>
       </nav>
     </div>
@@ -137,15 +162,13 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
       >
         <div class="md:col-span-3">
           <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
-            Hola, soy
+            {{ t('hero.hola') }}
           </p>
           <h1 class="mt-3 text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
             arico<span class="text-accent">.</span>dev
           </h1>
           <p class="mt-5 max-w-md text-lg text-soft">
-            Soy estudiante y todavía no soy desarrollador, pero es lo que me
-            gusta hacer. Construyo aplicaciones web con React, Next.js y Vue,
-            y aplicaciones móviles con Kotlin.
+            {{ t('hero.bio') }}
           </p>
 
           <ul
@@ -174,26 +197,26 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         <div class="md:col-span-2">
           <div class="border-2 border-line bg-raise p-6">
             <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
-              Estado
+              {{ t('hero.estado') }}
             </p>
             <ul class="mt-4 space-y-3 text-sm">
               <li class="flex items-center justify-between gap-4 border-b border-line pb-3">
                 <span class="flex items-center gap-2 text-soft">
                   <PhGraduationCap :size="16" />
-                  Estudiante
+                  {{ t('hero.estudiante') }}
                 </span>
-                <span class="font-mono text-xs font-bold text-accent">Activo</span>
+                <span class="font-mono text-xs font-bold text-accent">{{ t('hero.activo') }}</span>
               </li>
               <li class="flex items-center justify-between gap-4 border-b border-line pb-3">
                 <span class="flex items-center gap-2 text-soft">
                   <PhGithubLogo :size="16" />
-                  Repos
+                  {{ t('hero.repos') }}
                 </span>
-                <span class="font-mono text-xs font-bold">5 públicos</span>
+                <span class="font-mono text-xs font-bold">{{ t('hero.reposPubl') }}</span>
               </li>
               <li class="flex justify-between gap-4 pt-1">
-                <span class="text-soft">Enfoque</span>
-                <span class="font-mono text-xs font-bold">Web + Móvil</span>
+                <span class="text-soft">{{ t('hero.enfoque') }}</span>
+                <span class="font-mono text-xs font-bold">{{ t('hero.webMovil') }}</span>
               </li>
             </ul>
           </div>
@@ -206,7 +229,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         class="mx-auto mb-10 flex max-w-6xl items-center gap-2 px-5 font-mono text-xs uppercase tracking-wider text-faint transition-colors hover:text-accent"
       >
         <PhArrowDown :size="14" weight="bold" />
-        Proyectos
+        {{ t('hero.proyectosCue') }}
       </a>
     </section>
 
@@ -216,18 +239,18 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
           <div>
             <h2 class="text-3xl font-black uppercase tracking-tight sm:text-4xl">
-              Proyectos
+              {{ t('proyectos.title') }}
             </h2>
           </div>
 
           <p class="mt-4 max-w-prose text-soft">
-            Una selección de mis repositorios públicos en GitHub.
+            {{ t('proyectos.sub') }}
           </p>
 
           <div class="mt-10 flex flex-col gap-4">
             <ProjectCard
               v-for="(project, i) in all"
-              :key="project.name"
+              :key="project.slug"
               :index="String(i + 1).padStart(2, '0')"
               :project="project"
             />
@@ -242,32 +265,17 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         <div class="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-5 md:py-20">
           <div class="md:col-span-2">
             <h2 class="text-3xl font-black uppercase tracking-tight sm:text-4xl">
-              Sobre mí
+              {{ t('sobre.title') }}
             </h2>
           </div>
           <div class="md:col-span-3">
             <p class="text-lg text-ink">
-              Soy <span class="font-bold">arico-dev</span>, estudiante. Aún
-              no soy desarrollador, pero es lo que me gusta hacer: me encanta
-              pasar ideas reales a producto, desde sistemas de gestión hasta
-              juegos y apps móviles.
+              {{ t('sobre.p1a') }}<span class="font-bold">arico-dev</span>{{ t('sobre.p1b') }}
             </p>
             <ul class="mt-6 grid gap-2 border-2 border-line p-6 sm:grid-cols-2">
-              <li class="flex items-center gap-2 text-soft">
-                <span class="text-accent">▸</span>
-                React, Next.js y Vue
-              </li>
-              <li class="flex items-center gap-2 text-soft">
-                <span class="text-accent">▸</span>
-                Kotlin para Android
-              </li>
-              <li class="flex items-center gap-2 text-soft">
-                <span class="text-accent">▸</span>
-                Código documentado en GitHub
-              </li>
-              <li class="flex items-center gap-2 text-soft">
-                <span class="text-accent">▸</span>
-                Open source y con fines de aprendizaje
+              <li v-for="(skill, i) in skills" :key="i" class="flex items-center gap-3 text-soft">
+                <span class="font-mono text-xs font-bold text-accent">0{{ i + 1 }}</span>
+                {{ skill }}
               </li>
             </ul>
           </div>
@@ -282,15 +290,15 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
       <div class="grid items-center gap-8 md:grid-cols-2">
         <div>
           <p class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-soft">
-            ¿Un proyecto en mente?
+            {{ t('footer.pregunta') }}
           </p>
           <p class="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">
-            Hablemos
+            {{ t('footer.hablemos') }}
           </p>
         </div>
         <a
           href="mailto:hello@arico.dev"
-          class="inline-flex w-fit items-center gap-3 bg-accent px-6 py-4 font-mono text-base font-bold uppercase tracking-wider text-accentink transition-colors hover:bg-ink hover:text-bg"
+          class="inline-flex w-fit items-center gap-3 bg-accent px-6 py-4 font-mono text-base font-bold uppercase tracking-wider text-accentink transition-colors hover:bg-ink hover:text-bg md:justify-self-end"
         >
           <PhEnvelope :size="18" weight="bold" />
           hello@arico.dev
@@ -299,7 +307,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
 
       <div class="mt-12 flex flex-col items-start justify-between gap-4 border-t-2 border-line pt-6 font-mono text-xs text-faint sm:flex-row sm:items-center">
         <p>© 2026 arico-dev</p>
-        <p class="uppercase tracking-wider">Construido con Vue + Tailwind</p>
+        <p class="uppercase tracking-wider">{{ t('footer.hecho') }}</p>
       </div>
     </div>
   </footer>

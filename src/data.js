@@ -1,7 +1,8 @@
 // Real project data mirrored from github.com/arico-dev (fetched Sep 2026)
+// Translated strings (role, human, kind, description, preview captions) live
+// in src/i18n.js keyed by project slug. This file keeps non-translatable data.
 export const PROFILE = {
   handle: 'arico-dev',
-  role: 'Estudiante',
   student: true,
   location: '',
   website: 'https://github.com/arico-dev',
@@ -10,78 +11,58 @@ export const PROFILE = {
 export const PROJECTS = [
   {
     slug: 'portfolio',
-    name: 'portfolio',
-    human: 'Este portfolio',
-    kind: 'Web',
     stack: ['Vue', 'Vite', 'Tailwind'],
-    description:
-      'El sitio que estás viendo: portfolio brutalista con modo claro/oscuro, responsive y reveal-on-scroll con IntersectionObserver.',
     url: 'https://github.com/arico-dev/portfolio',
     demo: '',
     language: 'Vue',
     featured: false,
     preview: {
       shots: [
-        { src: '/projects/portfolio/hero.png', caption: 'Landing' },
-        { src: '/projects/portfolio/proyectos.png', caption: 'Sección de proyectos' },
+        { src: '/projects/portfolio/hero.png' },
+        { src: '/projects/portfolio/proyectos.png' },
       ],
     },
   },
   {
     slug: 'destiny2-guessing-game',
-    name: 'destiny2-guessing-game',
-    human: 'Destiny 2 Guessing Game',
-    kind: 'Web game',
     stack: ['TypeScript', 'Next.js', 'Tailwind', 'Bungie API'],
-    description:
-      'Wordle-style guessing game de Destiny 2 alimentado por la API de Bungie: armas, armaduras y perks exóticos desde el manifiesto. Desplegado en Vercel.',
     url: 'https://github.com/arico-dev/destiny2-guessing-game',
     demo: 'https://destiny2-guessing-game.vercel.app',
     language: 'TypeScript',
     featured: true,
     preview: {
       shots: [
-        { src: '/projects/destiny2/portada.png', caption: 'Pantalla de inicio' },
-        { src: '/projects/destiny2/juego.png', caption: 'Tablero de adivinanzas' },
+        { src: '/projects/destiny2/portada.png' },
+        { src: '/projects/destiny2/juego.png' },
       ],
     },
   },
   {
     slug: 'sistema-deportivo',
-    name: 'Sistema-Deportivo-',
-    human: 'Sistema de Gestión Deportiva',
-    kind: 'Web app',
     stack: ['PHP', 'MySQL', 'SQL'],
-    description:
-      'Aplicación web de gestión deportiva para una institución educativa: estudiantes, entrenadores, disciplinas, inscripciones, asistencias y evaluaciones de rendimiento. Con demo desplegada.',
     url: 'https://github.com/arico-dev/Sistema-Deportivo-',
     demo: 'https://sporttrack.page.gd/login.php',
     language: 'PHP',
     featured: true,
     preview: {
       shots: [
-        { src: '/projects/sistema-deportivo/login.png', caption: 'Inicio de sesión' },
-        { src: '/projects/sistema-deportivo/dashboard.png', caption: 'Panel principal' },
-        { src: '/projects/sistema-deportivo/estudiantes.png', caption: 'Gestión de estudiantes' },
+        { src: '/projects/sistema-deportivo/login.png' },
+        { src: '/projects/sistema-deportivo/dashboard.png' },
+        { src: '/projects/sistema-deportivo/estudiantes.png' },
       ],
     },
   },
   {
     slug: 'arduino-iot-hub',
-    name: 'Arduino-IoT-Hub',
-    human: 'Arduino IoT Hub',
-    kind: 'App móvil',
     stack: ['Kotlin', 'Android', 'Bluetooth Classic'],
-    description:
-      'App móvil con interfaz centralizada para la interacción bidireccional con proyectos de electrónica y automatización basados en Arduino, usando comunicación serial Bluetooth Classic.',
     url: 'https://github.com/arico-dev/Arduino-IoT-Hub',
     demo: '',
     language: 'Kotlin',
     featured: false,
     preview: {
       shots: [
-        { src: '/projects/arduino-iot-hub/home.png', caption: 'Pantalla principal' },
-        { src: '/projects/arduino-iot-hub/conexion.png', caption: 'Conexión Bluetooth' },
+        { src: '/projects/arduino-iot-hub/home.png' },
+        { src: '/projects/arduino-iot-hub/conexion.png' },
       ],
     },
   },
