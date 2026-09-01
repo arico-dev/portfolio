@@ -217,10 +217,10 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
           </p>
 
           <ul
-            class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-6"
+            class="mt-8 grid max-w-md grid-cols-5 gap-x-4 gap-y-6 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-6"
             aria-label="Stack de tecnologías"
           >
-            <li v-for="item in STACK" :key="item.label" class="group relative">
+            <li v-for="item in STACK" :key="item.label" class="group flex flex-col items-center gap-2 sm:relative">
               <img
                 :src="item.src"
                 :alt="item.label"
@@ -230,7 +230,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
                 loading="lazy"
               />
               <span
-                class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap border-2 border-line bg-bg px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-ink opacity-0 transition-opacity group-hover:opacity-100"
+                class="w-full overflow-hidden truncate text-center font-mono text-[10px] font-bold uppercase tracking-wider text-faint sm:absolute sm:top-[-2rem] sm:w-auto sm:whitespace-nowrap sm:border-2 sm:border-line sm:bg-bg sm:px-2 sm:py-0.5 sm:text-xs sm:text-ink sm:opacity-0 sm:transition-opacity sm:pointer-events-none sm:group-hover:opacity-100"
               >
                 {{ item.label }}
               </span>
