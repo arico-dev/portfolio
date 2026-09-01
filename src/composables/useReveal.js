@@ -44,11 +44,13 @@ export function useReveal() {
     // Each mount (i.e. each <Reveal>) (re)observes the pending elements.
     requestAnimationFrame(observePending.bind(null, document))
     // Fail-safe: never leave content hidden if the observer misbehaves.
+    // Short timeout so the page degrades to fully-visible if the observer
+    // stalls (e.g. first card of a section not yet intersecting).
     if (!fallbackTimer) {
       fallbackTimer = window.setTimeout(() => {
         // One fallback for the whole page; once visible everything stays.
         document.querySelectorAll('.reveal').forEach(reveal)
-      }, 1200)
+      }, 600)
     }
   })
 

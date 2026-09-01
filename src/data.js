@@ -9,6 +9,7 @@ export const PROFILE = {
 
 export const PROJECTS = [
   {
+    slug: 'portfolio',
     name: 'portfolio',
     human: 'Este portfolio',
     kind: 'Web',
@@ -19,8 +20,15 @@ export const PROJECTS = [
     demo: '',
     language: 'Vue',
     featured: false,
+    preview: {
+      shots: [
+        { src: '/projects/portfolio/hero.png', caption: 'Landing' },
+        { src: '/projects/portfolio/proyectos.png', caption: 'Sección de proyectos' },
+      ],
+    },
   },
   {
+    slug: 'destiny2-guessing-game',
     name: 'destiny2-guessing-game',
     human: 'Destiny 2 Guessing Game',
     kind: 'Web game',
@@ -31,8 +39,15 @@ export const PROJECTS = [
     demo: 'https://destiny2-guessing-game.vercel.app',
     language: 'TypeScript',
     featured: true,
+    preview: {
+      shots: [
+        { src: '/projects/destiny2/portada.png', caption: 'Pantalla de inicio' },
+        { src: '/projects/destiny2/juego.png', caption: 'Tablero de adivinanzas' },
+      ],
+    },
   },
   {
+    slug: 'sistema-deportivo',
     name: 'Sistema-Deportivo-',
     human: 'Sistema de Gestión Deportiva',
     kind: 'Web app',
@@ -43,8 +58,16 @@ export const PROJECTS = [
     demo: 'https://sporttrack.page.gd/login.php',
     language: 'PHP',
     featured: true,
+    preview: {
+      shots: [
+        { src: '/projects/sistema-deportivo/login.png', caption: 'Inicio de sesión' },
+        { src: '/projects/sistema-deportivo/dashboard.png', caption: 'Panel principal' },
+        { src: '/projects/sistema-deportivo/estudiantes.png', caption: 'Gestión de estudiantes' },
+      ],
+    },
   },
   {
+    slug: 'arduino-iot-hub',
     name: 'Arduino-IoT-Hub',
     human: 'Arduino IoT Hub',
     kind: 'App móvil',
@@ -55,6 +78,12 @@ export const PROJECTS = [
     demo: '',
     language: 'Kotlin',
     featured: false,
+    preview: {
+      shots: [
+        { src: '/projects/arduino-iot-hub/home.png', caption: 'Pantalla principal' },
+        { src: '/projects/arduino-iot-hub/conexion.png', caption: 'Conexión Bluetooth' },
+      ],
+    },
   },
 ]
 

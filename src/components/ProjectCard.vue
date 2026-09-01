@@ -1,12 +1,14 @@
 <script setup>
-import { PhArrowUpRight, PhGithubLogo } from '@phosphor-icons/vue'
+import { PhArrowUpRight, PhGithubLogo, PhImages } from '@phosphor-icons/vue'
 
-defineProps({
+const props = defineProps({
   index: { type: String, required: true },
   project: { type: Object, required: true },
 })
 
-
+function openPreview() {
+  window.location.hash = `/preview/${props.project.slug}`
+}
 </script>
 
 <template>
@@ -70,6 +72,14 @@ defineProps({
           Ver demo
           <PhArrowUpRight :size="14" weight="bold" />
         </a>
+        <button
+          type="button"
+          class="inline-flex items-center gap-2 border-2 border-line px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-colors hover:bg-ink hover:text-bg"
+          @click="openPreview"
+        >
+          <PhImages :size="14" weight="bold" />
+          Preview
+        </button>
       </div>
     </div>
   </article>

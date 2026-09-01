@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import {
   PhArrowRight,
   PhArrowDown,
@@ -10,6 +10,7 @@ import {
 import ThemeToggle from './components/ThemeToggle.vue'
 import Reveal from './components/Reveal.vue'
 import ProjectCard from './components/ProjectCard.vue'
+import ProjectPreview from './components/ProjectPreview.vue'
 import { PROFILE, PROJECTS, STACK } from './data'
 
 const menuOpen = ref(false)
@@ -19,18 +20,50 @@ const nav = [
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Sobre', href: '#sobre' },
 ]
+
+// --- Preview routing via location.hash (#/preview/:slug) ---
+const PREVIEW_PREFIX = '#/preview/'
+const previewSlug = ref(null)
+
+function parseHash() {
+  const h = window.location.hash
+  if (h.startsWith(PREVIEW_PREFIX)) {
+    previewSlug.value = decodeURIComponent(h.slice(PREVIEW_PREFIX.length))
+  } else {
+    previewSlug.value = null
+  }
+}
+
+const activeProject = computed(() =>
+  previewSlug.value
+    ? all.find((p) => p.slug === previewSlug.value) || null
+    : null
+)
+
+onMounted(() => {
+  parseHash()
+  window.addEventListener('hashchange', parseHash)
+})
+onUnmounted(() => window.removeEventListener('hashchange', parseHash))
 </script>
 
 <template>
   <a
+    v-if="!activeProject"
     href="#contenido"
     class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:border-2 focus:border-accent focus:bg-bg focus:px-4 focus:py-2 focus:font-mono focus:font-bold"
   >
     Saltar al contenido
   </a>
 
+  <ProjectPreview
+    v-else
+    :project="activeProject"
+  />
+
   <!-- ============ TOPBAR ============ -->
   <header
+    v-if="!activeProject"
     class="sticky top-0 z-40 border-b-2 border-line bg-bg/90 backdrop-blur-sm"
   >
     <div
@@ -96,7 +129,7 @@ const nav = [
     </div>
   </header>
 
-  <main id="contenido">
+  <main id="contenido" v-if="!activeProject">
     <!-- ============ HERO ============ -->
     <section class="relative flex min-h-[calc(100dvh-66px)] flex-col">
       <div
@@ -244,7 +277,7 @@ const nav = [
   </main>
 
   <!-- ============ FOOTER / CTA ============ -->
-  <footer class="border-t-2 border-line bg-raise">
+  <footer v-if="!activeProject" class="border-t-2 border-line bg-raise">
     <div class="mx-auto max-w-6xl px-5 py-14 md:py-16">
       <div class="grid items-center gap-8 md:grid-cols-2">
         <div>
