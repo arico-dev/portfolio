@@ -34,6 +34,15 @@ const messages = {
       p1b: ', estudiante. Aún no soy desarrollador, pero es lo que me gusta hacer: me encanta pasar ideas reales a producto, desde sistemas de gestión hasta juegos y apps móviles.',
       skills: ['React, Next.js y Vue', 'Kotlin para Android', 'Código documentado en GitHub', 'Open source y con fines de aprendizaje'],
     },
+    formacion: {
+      title: 'Formación',
+      sub: 'Mi recorrido de estudio hasta hoy.',
+      items: [
+        { titulo: 'Educación secundaria', lugar: 'Técnico en redes y telecomunicaciones', estado: 'Finalizado' },
+        { titulo: 'Práctica profesional', lugar: 'Colegio Kronos · renovación completa de la infraestructura de red', estado: 'Completada' },
+        { titulo: 'Ingeniería en Informática', lugar: 'INACAP · Desarrollo web, móvil y bases de datos', estado: 'En curso' },
+      ],
+    },
     footer: {
       pregunta: '¿Un proyecto en mente?',
       hablemos: 'Hablemos',
@@ -104,6 +113,15 @@ const messages = {
       p1a: "I'm ",
       p1b: ", a student. Not a developer yet, but it's what I love doing: I enjoy turning real ideas into products, from management systems to games and mobile apps.",
       skills: ['React, Next.js and Vue', 'Kotlin for Android', 'Code documented on GitHub', 'Open source and for learning'],
+    },
+    formacion: {
+      title: 'Education',
+      sub: 'My learning journey so far.',
+      items: [
+        { titulo: 'High school', lugar: 'Networking & telecommunications technician', estado: 'Completed' },
+        { titulo: 'Professional internship', lugar: 'Colegio Kronos · full network infrastructure overhaul', estado: 'Completed' },
+        { titulo: 'Computer engineering', lugar: 'INACAP · Web, mobile & databases', estado: 'In progress' },
+      ],
     },
     footer: {
       pregunta: 'Got a project in mind?',

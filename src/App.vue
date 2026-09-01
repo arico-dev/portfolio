@@ -17,7 +17,10 @@ import { PROFILE, PROJECTS, STACK } from './data'
 
 const { t, tm, locale } = useI18n()
 
+const mail = atob('YWxsZW4uYXJlQHByb3Rvbi5tZQ==')
+
 const skills = computed(() => tm('sobre.skills'))
+const formacion = computed(() => tm('formacion.items'))
 
 const menuOpen = ref(false)
 const all = PROJECTS
@@ -116,7 +119,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
           <span class="sr-only">{{ locale === 'es' ? 'EN' : 'ES' }}</span>
         </button>
         <a
-          href="mailto:hello@arico.dev"
+          :href="'mailto:' + mail"
           class="hidden items-center gap-2 border-2 border-line px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-colors hover:bg-accent hover:text-accentink sm:inline-flex"
         >
           {{ t('nav.contacto') }}
@@ -147,7 +150,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         >
           {{ item.label }}
         </a>
-        <a href="mailto:hello@arico.dev" class="py-3 font-bold text-accent" @click="menuOpen = false">
+        <a :href="'mailto:' + mail" class="py-3 font-bold text-accent" @click="menuOpen = false">
           {{ t('nav.contacto') }}
         </a>
       </nav>
@@ -165,7 +168,14 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
             {{ t('hero.hola') }}
           </p>
           <h1 class="mt-3 text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-            arico<span class="text-accent">.</span>dev
+            <span class="group inline-block cursor-default">
+              <span class="block h-[0.95em] overflow-hidden">
+                <span class="block transition-transform duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none group-hover:-translate-y-[0.95em]">
+                  <span class="block">arico-<span class="text-accent">dev</span></span>
+                  <span class="block">Anthony Allen</span>
+                </span>
+              </span>
+            </span>
           </h1>
           <p class="mt-5 max-w-md text-lg text-soft">
             {{ t('hero.bio') }}
@@ -259,6 +269,42 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
       </Reveal>
     </section>
 
+    <!-- ============ FORMACIÓN ============ -->
+    <section id="formacion" class="border-t-2 border-line">
+      <Reveal>
+        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+          <div class="grid gap-10 md:grid-cols-5">
+            <div class="md:col-span-2">
+              <h2 class="text-3xl font-black uppercase tracking-tight sm:text-4xl">
+                {{ t('formacion.title') }}
+              </h2>
+            </div>
+            <div class="md:col-span-3">
+              <p class="max-w-prose text-soft">{{ t('formacion.sub') }}</p>
+              <ul class="mt-6 grid gap-2 sm:grid-cols-2">
+                <li
+                  v-for="(item, i) in formacion"
+                  :key="i"
+                  class="border-2 border-line bg-raise p-4"
+                >
+                  <div class="flex items-start justify-between gap-3">
+                    <span class="font-mono text-xs font-bold text-accent">0{{ i + 1 }}</span>
+                    <span
+                      class="border border-line px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider whitespace-nowrap"
+                    >
+                      {{ item.estado }}
+                    </span>
+                  </div>
+                  <p class="mt-3 font-bold uppercase tracking-tight">{{ item.titulo }}</p>
+                  <p class="mt-1 font-mono text-xs text-faint">{{ item.lugar }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+
     <!-- ============ SOBRE ============ -->
     <section id="sobre" class="border-t-2 border-line">
       <Reveal>
@@ -297,16 +343,28 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
           </p>
         </div>
         <a
-          href="mailto:hello@arico.dev"
+          :href="'mailto:' + mail"
           class="inline-flex w-fit items-center gap-3 bg-accent px-6 py-4 font-mono text-base font-bold uppercase tracking-wider text-accentink transition-colors hover:bg-ink hover:text-bg md:justify-self-end"
         >
           <PhEnvelope :size="18" weight="bold" />
-          hello@arico.dev
+          {{ mail }}
         </a>
       </div>
 
       <div class="mt-12 flex flex-col items-start justify-between gap-4 border-t-2 border-line pt-6 font-mono text-xs text-faint sm:flex-row sm:items-center">
-        <p>© 2026 arico-dev</p>
+        <p class="flex items-center gap-3">
+          <span>© 2026 arico-dev</span>
+          <a
+            href="https://github.com/arico-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1.5 transition-colors hover:text-accent"
+            aria-label="GitHub"
+          >
+            <PhGithubLogo :size="14" weight="bold" />
+            GitHub
+          </a>
+        </p>
         <p class="uppercase tracking-wider">{{ t('footer.hecho') }}</p>
       </div>
     </div>
