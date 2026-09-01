@@ -29,14 +29,6 @@ Construido con **Vue 3** (`<script setup>`), **Vite** y **Tailwind CSS v4**, con
 - `src/components/ProjectCard.vue` y `ProjectPreview.vue` — cards y pantalla de preview
 - `public/projects/<slug>/` — capturas reales de cada proyecto (placeholder automático si falta el archivo)
 
-## Comandos
-
-```bash
-npm install    # instalar dependencias
-npm run dev    # dev server (http://localhost:5173)
-npm run build  # build de producción → dist/
-```
-
 ## Idioma
 
 Detecta `navigator.language` al inicio. Toggle manual en la navbar (persistido en `localStorage`). Para editar textos, actualizá ambas entradas (`es` y `en`) en `src/i18n.js`.
