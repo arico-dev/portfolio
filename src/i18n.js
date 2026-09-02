@@ -22,7 +22,6 @@ const messages = {
       reposPubl: '5 públicos',
       enfoque: 'Enfoque',
       webMovil: 'Web + Móvil',
-      proyectosCue: 'Proyectos',
     },
     proyectos: {
       title: 'Proyectos',
@@ -107,7 +106,6 @@ const messages = {
       reposPubl: '5 public',
       enfoque: 'Focus',
       webMovil: 'Web + Mobile',
-      proyectosCue: 'Projects',
     },
     proyectos: {
       title: 'Projects',

@@ -247,36 +247,28 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         </div>
       </div>
 
-      <!-- scroll cue -->
-      <a
-        href="#proyectos"
-        class="mx-auto mb-10 flex max-w-6xl items-center gap-2 px-5 font-mono text-xs uppercase tracking-wider text-faint transition-colors hover:text-accent"
+      <!-- stack -->
+      <ul
+        id="stack"
+        aria-label="Stack de tecnologías"
+        class="mx-auto mb-10 grid w-full max-w-md grid-cols-5 gap-x-4 gap-y-6 px-5 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-6"
       >
-        {{ t('hero.proyectosCue') }}
-      </a>
-    </section>
-
-    <!-- ============ STACK ============ -->
-    <section id="stack" aria-label="Stack de tecnologías" class="border-t-2 border-line">
-      <div class="mx-auto w-full max-w-6xl px-5 py-10 md:py-12">
-        <ul class="grid max-w-md grid-cols-5 gap-x-4 gap-y-6 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-6">
-          <li v-for="item in STACK" :key="item.label" class="group flex flex-col items-center gap-2 sm:relative">
-            <img
-              :src="item.src"
-              :alt="item.label"
-              :class="['h-8 w-8 transition-transform group-hover:scale-110', item.invert && 'stack-icon-invert']"
-              width="32"
-              height="32"
-              loading="lazy"
-            />
-            <span
-              class="w-full overflow-hidden truncate text-center font-mono text-[10px] font-bold uppercase tracking-wider text-faint sm:absolute sm:top-[-2rem] sm:w-auto sm:whitespace-nowrap sm:border-2 sm:border-line sm:bg-bg sm:px-2 sm:py-0.5 sm:text-xs sm:text-ink sm:opacity-0 sm:transition-opacity sm:pointer-events-none sm:group-hover:opacity-100"
-            >
-              {{ item.label }}
-            </span>
-          </li>
-        </ul>
-      </div>
+        <li v-for="item in STACK" :key="item.label" class="group flex flex-col items-center gap-2 sm:relative">
+          <img
+            :src="item.src"
+            :alt="item.label"
+            :class="['h-8 w-8 transition-transform group-hover:scale-110', item.invert && 'stack-icon-invert']"
+            width="32"
+            height="32"
+            loading="lazy"
+          />
+          <span
+            class="w-full overflow-hidden truncate text-center font-mono text-[10px] font-bold uppercase tracking-wider text-faint sm:absolute sm:top-[-2rem] sm:w-auto sm:whitespace-nowrap sm:border-2 sm:border-line sm:bg-bg sm:px-2 sm:py-0.5 sm:text-xs sm:text-ink sm:opacity-0 sm:transition-opacity sm:pointer-events-none sm:group-hover:opacity-100"
+          >
+            {{ item.label }}
+          </span>
+        </li>
+      </ul>
     </section>
 
     <!-- ============ PROYECTOS ============ -->
