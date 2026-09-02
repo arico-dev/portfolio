@@ -13,7 +13,7 @@ const messages = {
     },
     hero: {
       hola: 'Hola, soy',
-      bio: 'Soy estudiante y todavía no soy desarrollador, pero es lo que me gusta hacer. Construyo aplicaciones web con React, Next.js y Vue, y aplicaciones móviles con Kotlin.',
+      bio: 'Aún no soy desarrollador, pero es lo que me gusta hacer: web con React, Next.js y Vue; móvil con Kotlin.',
       estado: 'Estado',
       estudiante: 'Estudiante',
       activo: 'Activo',
@@ -97,7 +97,7 @@ const messages = {
     },
     hero: {
       hola: "Hi, I'm",
-      bio: "I'm a student and not a developer yet, but it's what I love doing. I build web apps with React, Next.js and Vue, and mobile apps with Kotlin.",
+      bio: "Not yet a developer, but it's what I love doing: web with React, Next.js and Vue; mobile with Kotlin.",
       estado: 'Status',
       estudiante: 'Student',
       activo: 'Active',

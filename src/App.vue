@@ -3,7 +3,6 @@ import { ref, computed, watch, defineAsyncComponent, onMounted, onUnmounted } fr
 import { useI18n } from 'vue-i18n'
 import {
   PhArrowRight,
-  PhArrowDown,
   PhGithubLogo,
   PhEnvelope,
   PhGraduationCap,
@@ -215,27 +214,6 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
           <p class="mt-5 max-w-md text-lg text-soft">
             {{ t('hero.bio') }}
           </p>
-
-          <ul
-            class="mt-8 grid max-w-md grid-cols-5 gap-x-4 gap-y-6 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-6"
-            aria-label="Stack de tecnologías"
-          >
-            <li v-for="item in STACK" :key="item.label" class="group flex flex-col items-center gap-2 sm:relative">
-              <img
-                :src="item.src"
-                :alt="item.label"
-                :class="['h-8 w-8 transition-transform group-hover:scale-110', item.invert && 'stack-icon-invert']"
-                width="32"
-                height="32"
-                loading="lazy"
-              />
-              <span
-                class="w-full overflow-hidden truncate text-center font-mono text-[10px] font-bold uppercase tracking-wider text-faint sm:absolute sm:top-[-2rem] sm:w-auto sm:whitespace-nowrap sm:border-2 sm:border-line sm:bg-bg sm:px-2 sm:py-0.5 sm:text-xs sm:text-ink sm:opacity-0 sm:transition-opacity sm:pointer-events-none sm:group-hover:opacity-100"
-              >
-                {{ item.label }}
-              </span>
-            </li>
-          </ul>
         </div>
 
         <!-- index / status block -->
@@ -273,9 +251,31 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
         href="#proyectos"
         class="mx-auto mb-10 flex max-w-6xl items-center gap-2 px-5 font-mono text-xs uppercase tracking-wider text-faint transition-colors hover:text-accent"
       >
-        <PhArrowDown :size="14" weight="bold" />
         {{ t('hero.proyectosCue') }}
       </a>
+    </section>
+
+    <!-- ============ STACK ============ -->
+    <section aria-label="Stack de tecnologías" class="border-t-2 border-line">
+      <div class="mx-auto w-full max-w-6xl px-5 py-10 md:py-12">
+        <ul class="grid max-w-md grid-cols-5 gap-x-4 gap-y-6 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-6">
+          <li v-for="item in STACK" :key="item.label" class="group flex flex-col items-center gap-2 sm:relative">
+            <img
+              :src="item.src"
+              :alt="item.label"
+              :class="['h-8 w-8 transition-transform group-hover:scale-110', item.invert && 'stack-icon-invert']"
+              width="32"
+              height="32"
+              loading="lazy"
+            />
+            <span
+              class="w-full overflow-hidden truncate text-center font-mono text-[10px] font-bold uppercase tracking-wider text-faint sm:absolute sm:top-[-2rem] sm:w-auto sm:whitespace-nowrap sm:border-2 sm:border-line sm:bg-bg sm:px-2 sm:py-0.5 sm:text-xs sm:text-ink sm:opacity-0 sm:transition-opacity sm:pointer-events-none sm:group-hover:opacity-100"
+            >
+              {{ item.label }}
+            </span>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <!-- ============ PROYECTOS ============ -->
