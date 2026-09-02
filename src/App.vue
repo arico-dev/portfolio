@@ -44,6 +44,7 @@ function toggleName() {
 }
 
 const nav = computed(() => [
+  { label: t('nav.stack'), href: '#stack' },
   { label: t('nav.proyectos'), href: '#proyectos' },
   { label: t('nav.sobre'), href: '#sobre' },
 ])
@@ -256,7 +257,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
     </section>
 
     <!-- ============ STACK ============ -->
-    <section aria-label="Stack de tecnologías" class="border-t-2 border-line">
+    <section id="stack" aria-label="Stack de tecnologías" class="border-t-2 border-line">
       <div class="mx-auto w-full max-w-6xl px-5 py-10 md:py-12">
         <ul class="grid max-w-md grid-cols-5 gap-x-4 gap-y-6 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-6">
           <li v-for="item in STACK" :key="item.label" class="group flex flex-col items-center gap-2 sm:relative">

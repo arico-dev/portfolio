@@ -7,6 +7,7 @@ const messages = {
       description: 'Portfolio de arico-dev, desarrollador web. React, Next.js, Kotlin y más. Proyectos, educación y formas de contacto.',
     },
     nav: {
+      stack: 'Stack',
       proyectos: 'Proyectos',
       sobre: 'Sobre',
       contacto: 'Contacto',
@@ -91,6 +92,7 @@ const messages = {
       description: 'Portfolio of arico-dev, web developer. React, Next.js, Kotlin and more. Projects, education and ways to get in touch.',
     },
     nav: {
+      stack: 'Stack',
       proyectos: 'Projects',
       sobre: 'About',
       contacto: 'Contact',

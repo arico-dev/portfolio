@@ -46,6 +46,7 @@
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 html[data-theme="dark"] {
   color-scheme: dark;
