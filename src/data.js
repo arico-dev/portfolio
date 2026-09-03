@@ -53,16 +53,17 @@ export const PROJECTS = [
     },
   },
   {
-    slug: 'arduino-iot-hub',
-    stack: ['Kotlin', 'Android', 'Bluetooth Classic'],
-    url: 'https://github.com/arico-dev/Arduino-IoT-Hub',
+    slug: 'music-player',
+    stack: ['Kotlin', 'Compose', 'Media3'],
+    url: 'https://github.com/arico-dev/music-player',
     demo: '',
     language: 'Kotlin',
     featured: false,
+    inProgress: true,
     preview: {
       shots: [
-        { src: '/projects/arduino-iot-hub/home.png' },
-        { src: '/projects/arduino-iot-hub/conexion.png' },
+        { src: '/projects/music-player/portada.png' },
+        { src: '/projects/music-player/reproductor.png' },
       ],
     },
   },

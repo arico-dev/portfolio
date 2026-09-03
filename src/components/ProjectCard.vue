@@ -39,6 +39,13 @@ function openPreview() {
             <span class="h-1.5 w-1.5 rounded-full bg-accentink"></span>
             {{ t('proyectos.live') }}
           </span>
+          <span
+            v-if="project.inProgress"
+            class="inline-flex items-center gap-1.5 border-2 border-accent px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-accent"
+          >
+            <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-accent"></span>
+            {{ t(pkey() + '.estado') }}
+          </span>
           <span class="font-mono text-xs uppercase tracking-wider text-faint">
             {{ t(pkey() + '.kind') }}
           </span>

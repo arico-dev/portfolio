@@ -77,11 +77,12 @@ const messages = {
         description: 'Aplicación web de gestión deportiva para una institución educativa: estudiantes, entrenadores, disciplinas, inscripciones, asistencias y evaluaciones de rendimiento. Con demo desplegada.',
         shots: ['Inicio de sesión', 'Panel principal', 'Gestión de estudiantes'],
       },
-      'arduino-iot-hub': {
-        human: 'Arduino IoT Hub',
+      'music-player': {
+        human: 'Music Player',
         kind: 'App móvil',
-        description: 'App móvil con interfaz centralizada para la interacción bidireccional con proyectos de electrónica y automatización basados en Arduino, usando comunicación serial Bluetooth Classic.',
-        shots: ['Pantalla principal', 'Conexión Bluetooth'],
+        description: 'Reproductor de música para Android con Kotlin y Jetpack Compose, usando Media3 para la reproducción de audio local.',
+        estado: 'En progreso',
+        shots: ['Portada', 'Reproductor'],
       },
     },
   },
@@ -161,11 +162,12 @@ const messages = {
         description: 'Sports management web app for an educational institution: students, coaches, disciplines, enrollments, attendance and performance evaluations. With a live demo.',
         shots: ['Login', 'Main dashboard', 'Student management'],
       },
-      'arduino-iot-hub': {
-        human: 'Arduino IoT Hub',
+      'music-player': {
+        human: 'Music Player',
         kind: 'Mobile app',
-        description: 'Mobile app with a centralized interface for bidirectional interaction with Arduino-based electronics and automation projects, using Bluetooth Classic serial communication.',
-        shots: ['Main screen', 'Bluetooth connection'],
+        description: 'Android music player built with Kotlin and Jetpack Compose, using Media3 for local audio playback.',
+        estado: 'In progress',
+        shots: ['Cover', 'Player'],
       },
     },
   },
