@@ -103,7 +103,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
   <!-- ============ TOPBAR ============ -->
   <header
     v-if="!activeProject"
-    class="sticky top-0 z-40 border-b-2 border-line bg-bg/90 backdrop-blur-sm"
+    class="sticky top-0 z-40 border-b-2 border-line bg-bg"
   >
     <div
       class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3"
@@ -180,7 +180,7 @@ onUnmounted(() => window.removeEventListener('hashchange', parseHash))
 
   <main id="contenido" v-if="!activeProject">
     <!-- ============ HERO ============ -->
-    <section class="relative flex min-h-[calc(100dvh-66px)] flex-col">
+    <section class="relative flex min-h-[calc(100svh-66px)] flex-col">
       <div
         class="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center gap-10 px-5 py-12 md:grid md:grid-cols-5 md:py-16"
       >
